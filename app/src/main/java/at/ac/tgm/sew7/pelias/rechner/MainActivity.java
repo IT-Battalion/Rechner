@@ -7,12 +7,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.regex.Pattern;
 
@@ -22,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.inflateMenu(R.menu.menu);
+        toolbar.setOnMenuItemClickListener(this::itemClickEvent);
         findViewById(R.id.result).setBackgroundColor(Color.BLUE);
         findViewById(R.id.result).setOnTouchListener(this::resetResult);
         findViewById(R.id.berechnen).setOnClickListener(this::berechneErgebnis);
@@ -32,9 +39,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         findViewById(R.id.berechnen).setBackgroundColor(Color.GREEN);
+    }
+
+    public boolean itemClickEvent(MenuItem item) {
+        if (item.getItemId() == R.id.reset) {
+            ((TextView) findViewById(R.id.result)).setText("0");
+            ((EditText) findViewById(R.id.wert1)).setText(R.string.wert_1);
+            ((EditText) findViewById(R.id.wert2)).setText(R.string.wert_2);
+            Spinner spinner = (Spinner) findViewById(R.id.operationType);
+            spinner.setSelection(0);
+        } else if (item.getItemId() == R.id.info) {
+            Toast.makeText(getApplicationContext(), BuildConfig.VERSION_NAME + ", " + BuildConfig.AUTHOR, Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 
     public void sharedPreferenceLoad(View view) {
@@ -77,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean resetResult(View view, MotionEvent motionEvent) {
         ((TextView) view.findViewById(R.id.result)).setText("0");
-        return true;
+        return false;
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -85,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Berechne...", Toast.LENGTH_SHORT).show();
         EditText wert1element = (EditText) findViewById(R.id.wert1);
         EditText wert2element = (EditText) findViewById(R.id.wert2);
-        RadioGroup operationGroup = (RadioGroup) findViewById(R.id.operationType);
-        int operationID = operationGroup.getCheckedRadioButtonId();
+        Spinner spinner = (Spinner) findViewById(R.id.operationType);
+        int operationID = spinner.getSelectedItemPosition();
         double wert1 = 0.0;
         double wert2 = 0.0;
         try {
@@ -98,16 +125,16 @@ public class MainActivity extends AppCompatActivity {
         }
         double result = 0.0;
         switch (operationID) {
-            case R.id.operationDivide:
+            case 4:
                 result = wert1 / wert2;
                 break;
-            case R.id.operationMinus:
+            case 1:
                 result = wert1 - wert2;
                 break;
-            case R.id.operationMultiple:
+            case 2:
                 result = wert1 * wert2;
                 break;
-            case R.id.operationPlus:
+            case 0:
                 result = wert1 + wert2;
                 break;
             default:

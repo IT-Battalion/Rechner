@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/wert1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
 
     <EditText
         android:id="@+id/wert1"
@@ -22,49 +38,26 @@
         android:text="@string/wert_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <RadioGroup
+    <Spinner
         android:id="@+id/operationType"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:entries="@array/operationsArray"
+        android:minHeight="48dp"
         android:orientation="horizontal"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100000024">
-
-        <RadioButton
-            android:id="@+id/operationPlus"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:checked="true"
-            android:text="@string/plusAttr"
-            android:textColor="#00838F" />
-
-        <RadioButton
-            android:id="@+id/operationMinus"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/minusAttr" />
-
-        <RadioButton
-            android:id="@+id/operationMultiple"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/multipleAttr" />
-
-        <RadioButton
-            android:id="@+id/operationDivide"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/divideAttr" />
-
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/wert1"
+        app:layout_constraintVertical_bias="0.100000024"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/wert2"
@@ -82,9 +75,9 @@
         android:text="@string/wert_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wert1"
+        app:layout_constraintTop_toBottomOf="@+id/operationType"
         app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
@@ -150,4 +143,5 @@
         app:layout_constraintTop_toBottomOf="@+id/berechnen"
         tools:ignore="RtlSymmetry"
         tools:text="0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
