@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectTextInput(View view, Boolean b) {
+        //Pattern das überprüft ob im Input Strings stehen oder nur zahlen.
         if (!Pattern.compile("\\d+").matcher(((EditText) view).getText().toString()).matches()) {
             if (b) {
                 ((EditText) view).setText("");
