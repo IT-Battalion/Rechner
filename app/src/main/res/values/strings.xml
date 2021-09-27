@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rechner</string>
+    <string name="wert_1">Wert 1</string>
+    <string name="plusAttr">+</string>
+    <string name="minusAttr">-</string>
+    <string name="multipleAttr">*</string>
+    <string name="divideAttr">/</string>
+    <string name="wert_2">Wert 2</string>
+    <string name="mr">MR</string>
+    <string name="ms">MS</string>
+    <string name="berechnen">Berechnen</string>
+</resources>

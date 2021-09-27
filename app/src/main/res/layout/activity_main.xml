@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/wert1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:text="@string/wert_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/operationType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024">
+
+        <RadioButton
+            android:id="@+id/operationPlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:checked="true"
+            android:text="@string/plusAttr"
+            android:textColor="#00838F" />
+
+        <RadioButton
+            android:id="@+id/operationMinus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/minusAttr" />
+
+        <RadioButton
+            android:id="@+id/operationMultiple"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/multipleAttr" />
+
+        <RadioButton
+            android:id="@+id/operationDivide"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/divideAttr" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/wert2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:text="@string/wert_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wert1"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <Button
+        android:id="@+id/berechnen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/berechnen"
+        android:textColor="#000000"
+        app:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/ms"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wert2" />
+
+    <Button
+        android:id="@+id/ms"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/ms"
+        android:textColor="#B71C1C"
+        android:textSize="14sp"
+        app:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/mr"
+        app:layout_constraintTop_toBottomOf="@+id/wert2" />
+
+    <Button
+        android:id="@+id/mr"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/mr"
+        android:textColor="#000000"
+        app:backgroundTint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wert2" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:paddingStart="24sp"
+        android:paddingLeft="24sp"
+        android:textColor="#1976D2"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="@+id/berechnen"
+        app:layout_constraintTop_toBottomOf="@+id/berechnen"
+        tools:ignore="RtlSymmetry"
+        tools:text="0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
